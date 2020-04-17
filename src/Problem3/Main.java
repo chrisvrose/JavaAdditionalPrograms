@@ -31,6 +31,13 @@ public class Main {
         System.out.println("Enter the payment");
         double payment = input.nextDouble();
 
+	try{
+		if(payment<0 && payment>=1000000000)
+			throw new Exception();
+	}
+	catch(Exception e) {
+		System.out.println(e);
+	}
         NumberFormat usFormat = NumberFormat.getCurrencyInstance(Locale.US);
         NumberFormat indiaFormat = NumberFormat.getCurrencyInstance(new Locale("en", "IN"));
         NumberFormat chinaFormat = NumberFormat.getCurrencyInstance(Locale.CHINA);

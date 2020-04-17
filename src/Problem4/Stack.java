@@ -16,7 +16,7 @@ public class Stack {
     }
 
     private Boolean isFull() {
-        return top == stackSize;
+        return top == stackSize-1;
     }
 
     private Boolean isEmpty() {

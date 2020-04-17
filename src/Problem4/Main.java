@@ -24,7 +24,9 @@ public class Main {
                     System.out.println("Pushed!");
                     break;
                 case 2:
-                    System.out.println(stack.pop() + " was popped from the stack");
+		    int popped = stack.pop();
+		    if(popped != -1)
+                    	System.out.println(popped + " was popped from the stack");
                     break;
                 case 3:
                     System.out.println("Current stack status");
