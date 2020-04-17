@@ -10,7 +10,7 @@ public class Main {
         System.out.println("Enter a line");
         String sentence = input.next();
 
-        String regex = "[a-zA-Z]";
+        String regex = "[a-zA-Z]+";
 
         Matcher matcher = Pattern.compile(regex).matcher(sentence);
 
