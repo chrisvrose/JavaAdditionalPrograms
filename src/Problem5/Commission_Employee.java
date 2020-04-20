@@ -17,13 +17,19 @@ package Problem5;
 
 public class Commission_Employee extends Employee {
 
-    final double sales_cut = 0.60;
+    final int sales_cut = 6;//6/100
+    long commisions;
     Commission_Employee(String name, String empid, long sales) {
         super(name, empid);
-        this.salary = (long) (sales * sales_cut);
+        this.commisions = (long) (sales * sales_cut/100);
     }
 
-    public long getSalary() {
+    @Override
+    public void accept(EmployeeBaseVisitor v) {
+        v.visitCEmployee(this);
+    }
+
+    public long getTotalSalary() {
         return salary;
     }
 }

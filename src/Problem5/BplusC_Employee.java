@@ -15,15 +15,20 @@ compute the employee‘s gross salary.
  */
 package Problem5;
 
-public class BplusC_Employee extends Employee {
+public class BplusC_Employee extends Commission_Employee {
 
     final double sales_cut = 0.60;
+
     BplusC_Employee(String name, String empid, long base, long sales) {
-        super(name, empid);
-        this.salary =(long) (base + sales* (sales_cut));
+        super(name, empid, sales);
+        this.salary = base;
     }
 
-    public long getSalary() {
+    public void accept(EmployeeBaseVisitor e) {
+        e.visitBCEmployee(this);
+    }
+
+    public long getTotalSalary() {
         return salary;
     }
 }

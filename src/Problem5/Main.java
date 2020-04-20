@@ -14,42 +14,64 @@ methods to read and write the employee details (like name, emp_id, salary, etc),
 compute the employee‘s gross salary.
  */
 package Problem5;
-import java.util.Scanner;
+
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         String name, empid;
+        System.out.println("Enter number of employees");
+        ArrayList<Employee> employees = new ArrayList<Employee>();
+        Employee holder;
+        int num = input.nextInt();
+        for (int i = 0; i < num; i++) {
+            System.out.println("Employee Profile:\n1.Salaried\n2.Commission\n3.Salaried+Commissioned");
+            int choice = input.nextInt();
+            if ((choice < 4 && choice > 0)) {
+                System.out.println("Invalid. Reverting to default");
+                choice = 1;
+            }
 
-        System.out.println("Enter Salaried Employee details: ");
-        System.out.println("Name: ");
-        name = input.next();
-        System.out.println("Employee ID: ");
-        empid = input.next();
-        System.out.println("Salary: ");
-        Salaried_Employee salaried_employee = new Salaried_Employee(name, empid, input.nextLong());
-        System.out.println("The salary for the employee is "+salaried_employee.getSalary());
+            System.out.println("Name: ");
+            name = input.next();
+            System.out.println("Employee ID: ");
+            empid = input.next();
 
+            switch (choice) {
+                case 1:
+                    System.out.println("Salary: ");
+                    holder = new Salaried_Employee(name, empid, input.nextLong());
+                    break;
+                case 2:
+                    System.out.println("Sales: ");
+                    holder = new Commission_Employee(name, empid, input.nextLong());
+                    break;
+                case 3:
+                    System.out.println("Base salary: ");
+                    long base = input.nextLong();
+                    System.out.println("Sales: ");
+                    holder = new BplusC_Employee(name, empid, base, input.nextLong());
+                default:
+                    holder = null;
+            }
+            employees.add(holder);
+            // System.out.println("The salary for the employee is " +
+            // salaried_employee.getSalary());
+        }
 
-        System.out.println("Enter Commission Employee details: ");
-        System.out.println("Name: ");
-        name = input.next();
-        System.out.println("Employee ID: ");
-        empid = input.next();
-        System.out.println("Sales: ");
-        Commission_Employee commission_employee = new Commission_Employee(name, empid, input.nextLong());
-        System.out.println("The salary for the commission employee is "+commission_employee.getSalary());
+        //Time for increasing the salary. for changes, just modify the Visitor.
+        EmployeeVisitor ev = new EmployeeVisitor();
+        employees.forEach((e)->{
+            //This visitor will bump up salaries as required
+            ev.visit(e);
+            System.out.println("Name:"+e.getName());
+            System.out.println("ID:"+e.getEmployeeID());
+            System.out.println("Base Salary:"+e.getSalary());
+            System.out.println("Total Salary"+e.getTotalSalary());
+        });
+        
+        input.close();
 
-
-        System.out.println("Enter Base + Commission Employee details: ");
-        System.out.println("Name: ");
-        name = input.next();
-        System.out.println("Employee ID: ");
-        empid = input.next();
-        System.out.println("Base salary: ");
-        long base = input.nextLong();
-        System.out.println("Sales: ");
-        BplusC_Employee bplusC_employee = new BplusC_Employee(name, empid, base, input.nextLong());
-        System.out.println("The salary for the Base plus Commission employee is "+bplusC_employee.getSalary());
     }
 }

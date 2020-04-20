@@ -25,4 +25,13 @@ public class Salaried_Employee extends Employee {
     public long getSalary() {
         return salary;
     }
+    @Override
+    public void accept(EmployeeBaseVisitor v) {
+        v.visitBEmployee(this);
+    }
+
+    @Override
+    public long getTotalSalary() {
+        return getSalary();
+    }
 }

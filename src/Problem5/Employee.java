@@ -15,14 +15,28 @@ compute the employee‘s gross salary.
  */
 package Problem5;
 
-public class Employee {
-    String Name;
-    String EmployeeID;
-    long salary;
+public abstract class Employee {
+    protected String Name;
+    protected String EmployeeID;
+    protected long salary;
 
-    Employee(String name, String empid)
+    public Employee(String name, String empid)
     {
         this.Name = name;
         this.EmployeeID = empid;
+        this.salary = 0;
     }
+
+    public String getName(){
+        return Name;
+    }
+    public String getEmployeeID(){
+        return EmployeeID;
+    }
+    public abstract long getTotalSalary();
+    public long getSalary(){return salary;}
+    public long setSalary(long newSalary){salary = newSalary;return salary;}
+
+
+    public abstract void accept(EmployeeBaseVisitor v);
 }
