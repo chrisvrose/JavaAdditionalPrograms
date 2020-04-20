@@ -18,7 +18,9 @@ public class Main {
         while(matcher.find()) {
             count++;
         }
+        
 
         System.out.println("The character \'"+pattern+"\' occurred in the sentence \""+sentence+"\" "+count+" times");
+        input.close();
     }
 }

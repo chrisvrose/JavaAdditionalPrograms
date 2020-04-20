@@ -12,7 +12,7 @@ public class Main {
         System.out.println("Enter string to be checked: ");
         String string = input.next();
         string = string.toLowerCase();
-        char[] splitString = string.toCharArray();
+        char[] splitString = string.toLowerCase().toCharArray();
         int size = string.length();
 
         int[] frequency = new int[26];
@@ -38,5 +38,6 @@ public class Main {
         else {
             System.out.println("The string \""+string+"\" cannot be a palindrome");
         }
+        input.close();
     }
 }
