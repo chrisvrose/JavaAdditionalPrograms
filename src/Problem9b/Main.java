@@ -20,5 +20,6 @@ public class Main {
         else {
             System.out.println("There is a character besides alphabets in the sentence!");
         }
+        input.close();
     }
 }
