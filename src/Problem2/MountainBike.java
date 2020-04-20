@@ -20,7 +20,12 @@ public class MountainBike extends Bicycle {
         this.height = startHeight;
     }
 
-    public void setHeight (int newValue) {
+    public void setHeight(int newValue) {
         this.height = newValue;
+    }
+
+    // @Override
+    public boolean equals(MountainBike a) {
+        return this.color.equals(a.color)&&(this.gear==a.gear);
     }
 }

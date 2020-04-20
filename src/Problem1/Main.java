@@ -21,7 +21,7 @@ public class Main {
             usn = input.next();
             System.out.println("Enter branch of Student "+(i+1));
             branch = input.next();
-            System.out.println("Enter phone number of Student "+(i+1));
+            System.out.println("Enter phone # of Student "+(i+1));
             phno = input.next();
 
             students[i] = new Student(usn, name, branch, phno);
@@ -32,5 +32,6 @@ public class Main {
             System.out.println("Student "+(i+1));
             students[i].printDetails();
         }
+        input.close();
     }
 }

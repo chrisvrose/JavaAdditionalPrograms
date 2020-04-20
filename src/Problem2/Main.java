@@ -11,6 +11,7 @@ Write a Java program to create a base class called Bicycle with member variables
         and methods of the base class.
 */
 package Problem2;
+
 import java.util.Scanner;
 
 public class Main {
@@ -39,9 +40,9 @@ public class Main {
         color = input.next();
         MountainBike mb2 = new MountainBike(startHeight, gear, speed, color);
 
-        if( (mb1.getColor().equals(mb2.getColor())) && (mb1.getGear()==mb2.getGear()))
-        {
+        if (mb1.equals(mb2)) {
             mb1.printDetails();
         }
+        input.close();
     }
 }

@@ -28,7 +28,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter the payment");
+        System.out.println("Enter payment amount");
         double payment = input.nextDouble();
 
 	try{
@@ -37,7 +37,9 @@ public class Main {
 	}
 	catch(Exception e) {
 		System.out.println(e);
-	}
+	}finally{
+        input.close();
+    }
         NumberFormat usFormat = NumberFormat.getCurrencyInstance(Locale.US);
         NumberFormat indiaFormat = NumberFormat.getCurrencyInstance(new Locale("en", "IN"));
         NumberFormat chinaFormat = NumberFormat.getCurrencyInstance(Locale.CHINA);
