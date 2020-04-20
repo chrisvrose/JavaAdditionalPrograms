@@ -3,52 +3,59 @@ Write a program that reads in a series of first names and eliminates duplicates 
 them in a Set. Allow the user to search for a first name.
  */
 package Problem8;
+
 import java.util.*;
+
 public class Main {
+    static void sop(String s) {
+        System.out.println(s);
+    }
+
+    static String menu = "1.Menu\n 2.Add name\n3.Remove name\n4.Search name\n0.Exit\n";
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter a list of surnames. Enter \"q\" to stop.");
-        String name;
-        ArrayList<String> nameList = new ArrayList<>();
+        // ArrayList<String> nameList = new ArrayList<>();
+        sop(menu);
+        TreeSet<String> nameList = new TreeSet<String>();
+        int choice;
 
-        do {
-            name = input.next();
-            if(name.equalsIgnoreCase("q"))
-                break;
-            else
-                nameList.add(name);
-        }while(true);
-
-        System.out.println("List elements");
-        for(String s: nameList) {
-            System.out.println(s);
-        }
-        System.out.println("\n");
-
-        Set<String> firstNames = new HashSet<String>(nameList);
-
-        System.out.println("Unique set elements");
-        for(String s: firstNames) {
-            System.out.println(s);
-        }
-        System.out.println("\n");
-
-        ArrayList<String> names = new ArrayList<String>(firstNames);
-        System.out.println("Enter first name to search in the set: ");
-        name = input.next();
-        Boolean flag = false;
-        int pos = 0;
-        for(String s:names) {
-            pos += 1;
-            if(s.equalsIgnoreCase(name)) {
-                flag = true;
-                break;
+        while ((choice = input.nextInt()) > 0) {
+            switch (choice) {
+                case 0:
+                    break;
+                case 1:
+                    sop(menu);
+                    break;
+                case 2:
+                    sop("Add name");
+                    if (!nameList.add(input.next())) {
+                        System.out.println("Tried to add duplicate");
+                    }
+                    break;
+                case 3:
+                    sop("Remove name");
+                    if (nameList.remove(input.next())) {
+                        sop("Removed");
+                    } else {
+                        sop("Did not remove");
+                    }
+                    break;
+                case 4:
+                    sop("Search Name");
+                    String nameEntry = input.next();
+                    if (nameList.contains(nameEntry)) {
+                        sop("Found:"+nameEntry);
+                    }else{
+                        sop("Not found");
+                    }
+                    break;
+                default:
+                    sop("Invalid");
             }
         }
 
-        if(flag)
-            System.out.println(name+" was found in position "+pos);
-        else
-            System.out.println(name+" is not in the set");
+        input.close();
+
     }
 }
