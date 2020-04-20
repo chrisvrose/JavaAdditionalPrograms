@@ -7,7 +7,8 @@ handling. You are free to make necessary assumptions.
 package Problem6a;
 
 public class VehicleCollisionException extends Exception {
+    static final long serialVersionUID = 0xF;
     VehicleCollisionException() {
-        super("Vehicles could collide! This is very unsafe! Please stop");
+        super("Vehicle Collision Possible");
     }
 }

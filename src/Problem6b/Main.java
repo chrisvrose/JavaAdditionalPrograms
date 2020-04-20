@@ -23,6 +23,8 @@ public class Main {
         }
         catch (ArithmeticException ae) {
             ae.printStackTrace();
+        }finally{
+            input.close();
         }
     }
 }
