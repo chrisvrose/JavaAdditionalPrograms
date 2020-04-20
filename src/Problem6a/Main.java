@@ -13,7 +13,7 @@ public class Main {
         int speed;
         String dir;
 
-        System.out.println("What speed is the first vehicle moving in?");
+        System.out.print("First vehicle speed\n:");
         speed = input.nextInt();
         System.out.println("What direction is the first vehicle moving in? (up, down, left or right)");
         dir = input.next();
@@ -26,15 +26,13 @@ public class Main {
         Vehicle vehicle2 = new Vehicle(speed, dir);
 
         try{
-            if(vehicle1.getDirection().equalsIgnoreCase(vehicle2.getDirection())) {
-                System.out.println("Perfectly safe roads");
-            }
-            else{
-                throw new VehicleCollisionException();
-            }
+            vehicle1.ensureSafety(vehicle2);
+            System.out.println("Perfectly safe roads");
         }
         catch(VehicleCollisionException vce) {
             vce.printStackTrace();
+        }finally{
+            input.close();
         }
     }
 }

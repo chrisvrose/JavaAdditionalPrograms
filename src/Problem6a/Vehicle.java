@@ -19,6 +19,12 @@ public class Vehicle {
         return this.speed;
     }
 
+    public void ensureSafety(Vehicle b) throws VehicleCollisionException{
+        if(direction.equalsIgnoreCase(b.getDirection())){
+            throw new VehicleCollisionException();
+        }
+    }
+
     public String getDirection() {
         return this.direction;
     }
